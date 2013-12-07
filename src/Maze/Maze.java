@@ -16,8 +16,8 @@ public class Maze {
     public static final int MAPWIDTH = 600;
     public static final int MAPHEIGHT = 600;
     public static final int TILESIZE = 10;
-    private final int WIDTHBUFFER = 17;
-    private final int HEIGHTBUFFER = 39;
+    private final int WIDTHBUFFER = 16;
+    private final int HEIGHTBUFFER = 38;
 
     public static void main(String[] args) {
         new Maze();
@@ -31,7 +31,7 @@ public class Maze {
         mazeFrame.add(new Board());
         mazeFrame.setSize(MAPWIDTH + WIDTHBUFFER, MAPHEIGHT + HEIGHTBUFFER);
         mazeFrame.setVisible(true);
-        mazeFrame.setResizable(true);
+        mazeFrame.setResizable(false);
         mazeFrame.setDefaultCloseOperation(mazeFrame.EXIT_ON_CLOSE);
 
 

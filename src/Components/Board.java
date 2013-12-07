@@ -34,8 +34,6 @@ public class Board extends JPanel implements ActionListener {
     }
 
     public void paint(Graphics g) {
-        //super.paint(g);
-
         for(int i = 0; i < getHorizAmount(MAPWIDTH, TILESIZE); i++) {
             for (int j = 0; j < getVertAmount(MAPHEIGHT, TILESIZE); j++) {
                 Tile tile = tiles.getTile(i, j);
