@@ -15,7 +15,7 @@ public class Maze {
 
     public static final int MAPWIDTH = 600;
     public static final int MAPHEIGHT = 600;
-    public static final int TILESIZE = 20;
+    public static final int TILESIZE = 10;
     private final int WIDTHBUFFER = 17;
     private final int HEIGHTBUFFER = 39;
 

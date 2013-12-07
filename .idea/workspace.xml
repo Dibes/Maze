@@ -5,7 +5,7 @@
     <ignored path="Maze.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Maze.java" changelist="be8efca8-0804-4cb1-9f12-94baf782dc28" time="1386444269990" ignored="false" />
-    <file path="/Board.java" changelist="be8efca8-0804-4cb1-9f12-94baf782dc28" time="1386453375202" ignored="false" />
+    <file path="/Board.java" changelist="be8efca8-0804-4cb1-9f12-94baf782dc28" time="1386454054053" ignored="false" />
     <file path="/Tile.java" changelist="be8efca8-0804-4cb1-9f12-94baf782dc28" time="1386453288024" ignored="false" />
     <file path="/Tiles.java" changelist="be8efca8-0804-4cb1-9f12-94baf782dc28" time="1386453473768" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -71,7 +71,7 @@
       <file leaf-file-name="Maze.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Maze/Maze.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="17" selection-start="385" selection-end="385" vertical-scroll-proportion="0.0">
+            <state line="17" column="41" selection-start="366" selection-end="366" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -82,7 +82,7 @@
       <file leaf-file-name="Board.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Components/Board.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="46" column="81" selection-start="1359" selection-end="1359" vertical-scroll-proportion="0.7647059">
+            <state line="39" column="22" selection-start="992" selection-end="992" vertical-scroll-proportion="0.5294118">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -122,10 +122,10 @@
       <list>
         <option value="$PROJECT_DIR$/src/Maze.java" />
         <option value="$PROJECT_DIR$/src/Maze/Board.java" />
-        <option value="$PROJECT_DIR$/src/Maze/Maze.java" />
         <option value="$PROJECT_DIR$/src/Components/Tile.java" />
-        <option value="$PROJECT_DIR$/src/Components/Board.java" />
         <option value="$PROJECT_DIR$/src/Components/Tiles.java" />
+        <option value="$PROJECT_DIR$/src/Maze/Maze.java" />
+        <option value="$PROJECT_DIR$/src/Components/Board.java" />
       </list>
     </option>
   </component>
@@ -491,7 +491,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Maze/Maze.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="17" selection-start="385" selection-end="385" vertical-scroll-proportion="0.0">
+        <state line="17" column="41" selection-start="366" selection-end="366" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -500,7 +500,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Components/Board.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="81" selection-start="1359" selection-end="1359" vertical-scroll-proportion="0.7647059">
+        <state line="39" column="22" selection-start="992" selection-end="992" vertical-scroll-proportion="0.5294118">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
