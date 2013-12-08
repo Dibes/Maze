@@ -13,6 +13,7 @@ public class Tile {
     private int yCoord;
     private int xLoc;
     private int yLoc;
+    private int wallBuffer;
     private int isFilled;
 
     public Tile (int xCoord, int yCoord, int xLoc, int yLoc, int isFilled) {

@@ -20,6 +20,7 @@ public class Board extends JPanel implements ActionListener {
     private final int MAPWIDTH = Maze.MAPWIDTH;
     private final int MAPHEIGHT = Maze.MAPHEIGHT;
     private final int TILESIZE = Maze.TILESIZE;
+    private final int WALLBUFFER = Maze.WALLBUFFER;
     private TileGenerator tileGenerator = new TileGenerator();
 
     public Board() {
@@ -39,7 +40,8 @@ public class Board extends JPanel implements ActionListener {
                 Tile tile = tileGenerator.getTile(i, j);
                 if (tile.getFilled() == 0) {
                     g.setColor(Color.WHITE);
-                    g.drawRect(tile.getxLoc(), tile.getyLoc(), TILESIZE, TILESIZE);
+                    g.fillRect(tile.getxLoc() + WALLBUFFER, tile.getyLoc() + WALLBUFFER, TILESIZE - WALLBUFFER, TILESIZE - WALLBUFFER);
+                    // Implement the walls here
                 } else {
                     g.setColor(Color.RED);
                     g.fillRect(tile.getxLoc(), tile.getyLoc(), TILESIZE, TILESIZE);
