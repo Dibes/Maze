@@ -3,6 +3,7 @@ package Maze;
 import Components.Board;
 
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -30,6 +31,7 @@ public class Maze {
         mazeFrame.setTitle("Maze");
         // Add the board to the frame
         mazeFrame.add(new Board());
+        mazeFrame.setBackground(Color.BLACK);
         mazeFrame.setSize(MAPWIDTH + WIDTHBUFFER, MAPHEIGHT + HEIGHTBUFFER);
         mazeFrame.setVisible(true);
         mazeFrame.setResizable(false);

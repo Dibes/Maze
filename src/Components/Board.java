@@ -52,8 +52,6 @@ public class Board extends JPanel implements ActionListener {
                     g.fillRect(walls[2].getxLoc(), walls[2].getyLoc(), walls[2].getWidth(), TILESIZE - WALLBUFFER);
                     // Right wall
                     g.fillRect(walls[3].getxLoc(), walls[3].getyLoc(), walls[3].getWidth(), TILESIZE - WALLBUFFER);
-
-
                 } else {
                     g.setColor(Color.RED);
                     g.fillRect(tile.getxLoc(), tile.getyLoc(), TILESIZE, TILESIZE);
