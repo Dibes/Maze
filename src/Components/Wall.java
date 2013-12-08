@@ -15,6 +15,7 @@ public class Wall {
     private int yLoc;
     private int width;
     private int isFilled;
+    private int position;
 
     public Wall(int xCoord, int yCoord, int xLoc, int yLoc, int isFilled, int width, int position) {
         setxCoord(xCoord);
@@ -23,8 +24,16 @@ public class Wall {
         setyLoc(yLoc);
         setFilled(isFilled);
         setWidth(width);
+        setPosition(position);
     }
 
+    public int getPosition() {
+        return position;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
+    }
 
     public int getxCoord() {
         return xCoord;

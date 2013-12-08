@@ -3,7 +3,6 @@ package Components;
 import Maze.Maze;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * Created with IntelliJ IDEA.
@@ -41,7 +40,7 @@ public class TileGenerator {
         for(int i = 0; i < getHorizAmount(MAPWIDTH, TILESIZE); i++) {
             for (int j = 0; j < getVertAmount(MAPHEIGHT, TILESIZE); j++) {
                 // Create a blank template of tiles to work with.
-                this.addTile(i, j, TILESIZE * i, TILESIZE * j, WALLBUFFER, 0);
+                this.addTile(i, j, TILESIZE * i, TILESIZE * j, WALLBUFFER, 1);
             }
         }
     }
@@ -66,13 +65,13 @@ public class TileGenerator {
          */
 
         // Top Wall
-        wallTiles.add(new int[]{xCoord, yCoord, xLoc + wallBuffer, yLoc, 0, wallWidth, 0});
+        wallTiles.add(new int[]{xCoord, yCoord, xLoc + wallBuffer, yLoc, 1, wallWidth, 0});
         // Bottom Wall
-        wallTiles.add(new int[]{xCoord, yCoord, xLoc + wallBuffer, yLoc + (TILESIZE), 0, wallWidth, 1});
+        wallTiles.add(new int[]{xCoord, yCoord, xLoc + wallBuffer, yLoc + (TILESIZE), 1, wallWidth, 1});
         // Left Wall
-        wallTiles.add(new int[]{xCoord, yCoord, xLoc, yLoc + wallBuffer, 0, wallBuffer, 2});
+        wallTiles.add(new int[]{xCoord, yCoord, xLoc, yLoc + wallBuffer, 1, wallBuffer, 2});
         // Right Wall
-        wallTiles.add(new int[]{xCoord, yCoord, xLoc + (TILESIZE), yLoc + wallBuffer, 0, wallBuffer, 3});
+        wallTiles.add(new int[]{xCoord, yCoord, xLoc + (TILESIZE), yLoc + wallBuffer, 1, wallBuffer, 3});
     }
 
     public Tile getTile(int xCoord, int yCoord) {
@@ -82,6 +81,24 @@ public class TileGenerator {
             }
         }
         return null;
+    }
+
+    public static void setTileVisible(int xCoord, int yCoord, int visibility) {
+        for (int[] tile : mapTiles) {
+            if (tile[0] == xCoord && tile[1] == yCoord) {
+                tile[4] = visibility;
+                break;
+            }
+        }
+    }
+
+    public static void setWallVisible(int xCoord, int yCoord, int visibility, int type) {
+        for (int[] wall : wallTiles) {
+            if (wall[0] == xCoord && wall[1] == yCoord && wall[6] == type) {
+                wall[4] = visibility;
+                break;
+            }
+        }
     }
 
     public Wall[] getWalls(int xCoord, int yCoord) {

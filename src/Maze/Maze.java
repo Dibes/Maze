@@ -1,6 +1,7 @@
 package Maze;
 
 import Components.Board;
+import Components.TileGenerator;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,7 +18,7 @@ public class Maze {
     public static final int MAPWIDTH = 600;
     public static final int MAPHEIGHT = 600;
     public static final int TILESIZE = 40;
-    public static int WALLBUFFER = 10;
+    public static int WALLBUFFER = 15;
     private final int WIDTHBUFFER = 16;
     private final int HEIGHTBUFFER = 38;
 
@@ -36,6 +37,9 @@ public class Maze {
         mazeFrame.setVisible(true);
         mazeFrame.setResizable(false);
         mazeFrame.setDefaultCloseOperation(mazeFrame.EXIT_ON_CLOSE);
+
+        TileGenerator.setTileVisible(0, 0, 0);
+        TileGenerator.setWallVisible(0, 0, 0, 0);
 
 
     }
