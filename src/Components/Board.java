@@ -38,10 +38,22 @@ public class Board extends JPanel implements ActionListener {
         for(int i = 0; i < getHorizAmount(MAPWIDTH, TILESIZE); i++) {
             for (int j = 0; j < getVertAmount(MAPHEIGHT, TILESIZE); j++) {
                 Tile tile = tileGenerator.getTile(i, j);
+                Wall[] walls = tileGenerator.getWalls(i, j);
                 if (tile.getFilled() == 0) {
                     g.setColor(Color.WHITE);
                     g.fillRect(tile.getxLoc() + WALLBUFFER, tile.getyLoc() + WALLBUFFER, TILESIZE - WALLBUFFER, TILESIZE - WALLBUFFER);
                     // Implement the walls here
+                    g.setColor(Color.BLACK);
+                    // Top wall
+                    g.fillRect(walls[0].getxLoc(), walls[0].getyLoc(), walls[0].getWidth(), WALLBUFFER);
+                    // Bottom wall
+                    g.fillRect(walls[1].getxLoc(), walls[1].getyLoc(), walls[1].getWidth(), WALLBUFFER);
+                    // Left wall
+                    g.fillRect(walls[2].getxLoc(), walls[2].getyLoc(), walls[2].getWidth(), TILESIZE - WALLBUFFER);
+                    // Right wall
+                    g.fillRect(walls[3].getxLoc(), walls[3].getyLoc(), walls[3].getWidth(), TILESIZE - WALLBUFFER);
+
+
                 } else {
                     g.setColor(Color.RED);
                     g.fillRect(tile.getxLoc(), tile.getyLoc(), TILESIZE, TILESIZE);

@@ -9,8 +9,71 @@ package Components;
  */
 public class Wall {
 
-    public Wall() {
+    private int xCoord;
+    private int yCoord;
+    private int xLoc;
+    private int yLoc;
+    private int width;
+    private int isFilled;
 
+    public Wall(int xCoord, int yCoord, int xLoc, int yLoc, int isFilled, int width, int position) {
+        setxCoord(xCoord);
+        setyCoord(yCoord);
+        setxLoc(xLoc);
+        setyLoc(yLoc);
+        setFilled(isFilled);
+        setWidth(width);
     }
+
+
+    public int getxCoord() {
+        return xCoord;
+    }
+
+    public void setxCoord(int xCoord) {
+        this.xCoord = xCoord;
+    }
+
+    public int getyCoord() {
+        return yCoord;
+    }
+
+    public void setyCoord(int yCoord) {
+        this.yCoord = yCoord;
+    }
+
+    public int getxLoc() {
+        return xLoc;
+    }
+
+    public void setxLoc(int xLoc) {
+        this.xLoc = xLoc;
+    }
+
+    public int getyLoc() {
+        return yLoc;
+    }
+
+    public void setyLoc(int yLoc) {
+        this.yLoc = yLoc;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public int getFilled() {
+        return isFilled;
+    }
+
+    public void setFilled(int filled) {
+        isFilled = filled;
+    }
+
+
 
 }
