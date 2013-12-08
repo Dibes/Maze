@@ -37,7 +37,8 @@ public class Maze {
         mazeFrame.setVisible(true);
         mazeFrame.setResizable(false);
         mazeFrame.setDefaultCloseOperation(mazeFrame.EXIT_ON_CLOSE);
-
+        
+        // Test wall and tile color changes
         TileGenerator.setTileVisible(0, 0, 0);
         TileGenerator.setWallVisible(0, 0, 0, 0);
 
