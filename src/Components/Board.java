@@ -20,7 +20,7 @@ public class Board extends JPanel implements ActionListener {
     private final int MAPWIDTH = Maze.MAPWIDTH;
     private final int MAPHEIGHT = Maze.MAPHEIGHT;
     private final int TILESIZE = Maze.TILESIZE;
-    private Tiles tiles = new Tiles();
+    private TileGenerator tileGenerator = new TileGenerator();
 
     public Board() {
         timer = new Timer(25, this);
@@ -36,7 +36,7 @@ public class Board extends JPanel implements ActionListener {
     public void paint(Graphics g) {
         for(int i = 0; i < getHorizAmount(MAPWIDTH, TILESIZE); i++) {
             for (int j = 0; j < getVertAmount(MAPHEIGHT, TILESIZE); j++) {
-                Tile tile = tiles.getTile(i, j);
+                Tile tile = tileGenerator.getTile(i, j);
                 if (tile.getFilled() == 0) {
                     g.setColor(Color.WHITE);
                     g.drawRect(tile.getxLoc(), tile.getyLoc(), TILESIZE, TILESIZE);

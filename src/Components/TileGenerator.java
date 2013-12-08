@@ -24,28 +24,54 @@ import java.util.HashMap;
  *      - 0 is not filled
  *      - 1 is filled
  */
-public class Tiles {
+public class TileGenerator {
 
     private final int MAPWIDTH = Maze.MAPWIDTH;
     private final int MAPHEIGHT = Maze.MAPHEIGHT;
     private final int TILESIZE = Maze.TILESIZE;
     public static ArrayList<int[]> mapTiles = new ArrayList();
+    public static ArrayList<int[]> wallTiles = new ArrayList();
 
-    public Tiles() {
+    /*
+     * Need to create a way to put 4 walls around each tile, and then have access to them...
+     */
+    public TileGenerator() {
         // Generation of the tiles goes in here!
         for(int i = 0; i < getHorizAmount(MAPWIDTH, TILESIZE); i++) {
             for (int j = 0; j < getVertAmount(MAPHEIGHT, TILESIZE); j++) {
-                if (i % 2 == 0 && j % 2 == 0) {
-                    this.addTile(i, j, TILESIZE * i, TILESIZE * j, 0);
-                } else {
-                    this.addTile(i, j, TILESIZE * i, TILESIZE * j, 1);
-                }
+                // Create a blank template of tiles to work with.
+                this.addTile(i, j, TILESIZE * i, TILESIZE * j, 2, 0);
             }
         }
     }
 
-    public void addTile(int xCoord, int yCoord, int xLoc, int yLoc, int isFilled) {
+    public void addTile(int xCoord, int yCoord, int xLoc, int yLoc, int wallBuffer, int isFilled) {
+        int wallWidth = TILESIZE - wallBuffer;
+
         mapTiles.add(new int[]{xCoord, yCoord, xLoc, yLoc, isFilled});
+
+        /*
+         * Wall Array Definitions
+         *  - X Coordinate
+         *  - Y Coordinate
+         *  - X Location
+         *  - Y Location
+         *  - Width of wall
+         *  - Position of wall
+         *      - 0 = Top
+         *      - 1 = Bottom
+         *      - 2 = Left
+         *      - 3 = Right
+         */
+
+        // Top Wall
+        wallTiles.add(new int[]{xCoord, yCoord, xLoc + wallBuffer, yLoc, wallWidth, 0});
+        // Bottom Wall
+        wallTiles.add(new int[]{xCoord, yCoord, xLoc + wallBuffer, yLoc + (TILESIZE - wallBuffer), wallWidth, 1});
+        // Left Wall
+        wallTiles.add(new int[]{xCoord, yCoord, xLoc, yLoc + wallBuffer, wallBuffer, 2});
+        // Right Wall
+        wallTiles.add(new int[]{xCoord, yCoord, xLoc + (TILESIZE - wallBuffer), yLoc + wallBuffer, wallBuffer, 3});
     }
 
     public Tile getTile(int xCoord, int yCoord) {
