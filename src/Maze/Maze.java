@@ -40,7 +40,9 @@ public class Maze {
         
         // Test wall and tile color changes
         TileGenerator.setTileVisible(0, 0, 0);
-        TileGenerator.setWallVisible(0, 0, 0, 0);
+        TileGenerator.setWallVisible(0, 0, 0, 3);
+        TileGenerator.setWallVisible(0, 1, 0, 0);
+
 
 
     }

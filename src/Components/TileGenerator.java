@@ -56,6 +56,7 @@ public class TileGenerator {
          *  - Y Coordinate
          *  - X Location
          *  - Y Location
+         *  - Is filled
          *  - Width of wall
          *  - Position of wall
          *      - 0 = Top
@@ -67,11 +68,12 @@ public class TileGenerator {
         // Top Wall
         wallTiles.add(new int[]{xCoord, yCoord, xLoc + wallBuffer, yLoc, 1, wallWidth, 0});
         // Bottom Wall
-        wallTiles.add(new int[]{xCoord, yCoord, xLoc + wallBuffer, yLoc + (TILESIZE), 1, wallWidth, 1});
+        wallTiles.add(new int[]{xCoord, yCoord, xLoc + wallBuffer, yLoc + TILESIZE, 1, wallWidth, 1});
         // Left Wall
         wallTiles.add(new int[]{xCoord, yCoord, xLoc, yLoc + wallBuffer, 1, wallBuffer, 2});
         // Right Wall
-        wallTiles.add(new int[]{xCoord, yCoord, xLoc + (TILESIZE), yLoc + wallBuffer, 1, wallBuffer, 3});
+        wallTiles.add(new int[]{xCoord, yCoord, xLoc + TILESIZE, yLoc + wallBuffer, 1, wallBuffer, 3});
+        System.out.println(yLoc + TILESIZE + wallBuffer + " " + wallWidth + " " + wallBuffer);
     }
 
     public Tile getTile(int xCoord, int yCoord) {

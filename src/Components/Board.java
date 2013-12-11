@@ -68,18 +68,18 @@ public class Board extends JPanel implements ActionListener {
 
                 if (walls[2].getFilled() == 0) {
                     g.setColor(Color.WHITE);
-                    g.fillRect(walls[2].getxLoc(), walls[2].getyLoc(), walls[2].getWidth(), WALLBUFFER);
+                    g.fillRect(walls[2].getxLoc(), walls[2].getyLoc(), walls[2].getWidth(), TILESIZE - WALLBUFFER);
                 } else {
                     g.setColor(Color.BLACK);
-                    g.fillRect(walls[2].getxLoc(), walls[2].getyLoc(), walls[2].getWidth(), WALLBUFFER);
+                    g.fillRect(walls[2].getxLoc(), walls[2].getyLoc(), walls[2].getWidth(), TILESIZE - WALLBUFFER);
                 }
 
                 if (walls[3].getFilled() == 0) {
                     g.setColor(Color.WHITE);
-                    g.fillRect(walls[3].getxLoc(), walls[3].getyLoc(), walls[3].getWidth(), WALLBUFFER);
+                    g.fillRect(walls[3].getxLoc(), walls[3].getyLoc(), walls[3].getWidth(), TILESIZE - WALLBUFFER);
                 } else {
                     g.setColor(Color.BLACK);
-                    g.fillRect(walls[3].getxLoc(), walls[3].getyLoc(), walls[3].getWidth(), WALLBUFFER);
+                    g.fillRect(walls[3].getxLoc(), walls[3].getyLoc(), walls[3].getWidth(), TILESIZE - WALLBUFFER);
                 }
             }
         }
