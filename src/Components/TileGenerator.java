@@ -40,15 +40,15 @@ public class TileGenerator {
         for(int i = 0; i < getHorizAmount(MAPWIDTH, TILESIZE); i++) {
             for (int j = 0; j < getVertAmount(MAPHEIGHT, TILESIZE); j++) {
                 // Create a blank template of tiles to work with.
-                this.addTile(i, j, TILESIZE * i, TILESIZE * j, WALLBUFFER, 1);
+                this.addTile(i, j, TILESIZE * i, TILESIZE * j, WALLBUFFER, 1, 0);
             }
         }
     }
 
-    public void addTile(int xCoord, int yCoord, int xLoc, int yLoc, int wallBuffer, int isFilled) {
+    public void addTile(int xCoord, int yCoord, int xLoc, int yLoc, int wallBuffer, int isFilled, int isVisited) {
         int wallWidth = TILESIZE - wallBuffer;
 
-        mapTiles.add(new int[]{xCoord, yCoord, xLoc, yLoc, isFilled});
+        mapTiles.add(new int[]{xCoord, yCoord, xLoc, yLoc, isFilled, isVisited});
 
         /*
          * Wall Array Definitions
@@ -76,22 +76,39 @@ public class TileGenerator {
         System.out.println(yLoc + TILESIZE + wallBuffer + " " + wallWidth + " " + wallBuffer);
     }
 
-    public Tile getTile(int xCoord, int yCoord) {
+    public static Tile getTile(int xCoord, int yCoord) {
         for (int[] tile : mapTiles) {
-            if (tile[0] == xCoord && tile[1] == yCoord) {
-                return new Tile(tile[0], tile[1], tile[2], tile[3], tile[4]);
+            if (tile[Tile.XCOORD] == xCoord && tile[Tile.YCOORD] == yCoord) {
+                return new Tile(tile[Tile.XCOORD], tile[Tile.YCOORD], tile[Tile.XLOC], tile[Tile.YLOC], tile[Tile.ISFILLED], tile[Tile.ISVISITED]);
             }
         }
         return null;
     }
 
+    public static ArrayList<int[]> getTiles() {
+        return mapTiles;
+    }
+
     public static void setTileVisible(int xCoord, int yCoord, int visibility) {
         for (int[] tile : mapTiles) {
-            if (tile[0] == xCoord && tile[1] == yCoord) {
-                tile[4] = visibility;
+            if (tile[Tile.XCOORD] == xCoord && tile[Tile.YCOORD] == yCoord) {
+                tile[Tile.ISFILLED] = visibility;
+                // Set visited
+                tile[Tile.ISVISITED] = 1;
                 break;
             }
         }
+    }
+
+    public static boolean isTilesVisited() {
+
+        for (int[] tile : mapTiles) {
+            if (tile[5] == 0) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     public static void setWallVisible(int xCoord, int yCoord, int visibility, int type) {

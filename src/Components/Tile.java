@@ -9,20 +9,35 @@ package Components;
  */
 public class Tile {
 
+    // Tile Constants
+    public static final int XCOORD = 0;
+    public static final int YCOORD = 1;
+    public static final int XLOC = 2;
+    public static final int YLOC = 3;
+    public static final int ISFILLED = 4;
+    public static final int ISVISITED = 5;
+
+
     private int xCoord;
     private int yCoord;
     private int xLoc;
     private int yLoc;
     private int wallBuffer;
     private int isFilled;
+    private int isVisited;
 
-    public Tile (int xCoord, int yCoord, int xLoc, int yLoc, int isFilled) {
+    public Tile (int xCoord, int yCoord, int xLoc, int yLoc, int isFilled, int isVisited) {
         setxCoord(xCoord);
         setyCoord(yCoord);
         setxLoc(xLoc);
         setyLoc(yLoc);
         setFilled(isFilled);
+        setVisited(isVisited);
     }
+
+    public int getVisited() { return isVisited; }
+
+    public void setVisited(int Visited) { this.isVisited = Visited; }
 
     public int getxCoord() {
         return xCoord;
