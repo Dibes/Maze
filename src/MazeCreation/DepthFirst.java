@@ -43,8 +43,6 @@ public class DepthFirst {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
-            System.out.println("_____________________________________________________________");
         }
 
     }
