@@ -16,6 +16,7 @@ public class Tile {
     public static final int YLOC = 3;
     public static final int ISFILLED = 4;
     public static final int ISVISITED = 5;
+    public static final int ISCURRENT = 6;
 
 
     private int xCoord;
@@ -25,15 +26,21 @@ public class Tile {
     private int wallBuffer;
     private int isFilled;
     private int isVisited;
+    private int isCurrent;
 
-    public Tile (int xCoord, int yCoord, int xLoc, int yLoc, int isFilled, int isVisited) {
+    public Tile (int xCoord, int yCoord, int xLoc, int yLoc, int isFilled, int isVisited, int isCurrent) {
         setxCoord(xCoord);
         setyCoord(yCoord);
         setxLoc(xLoc);
         setyLoc(yLoc);
         setFilled(isFilled);
         setVisited(isVisited);
+        setCurrent(isCurrent);
     }
+
+    public int getCurrent() { return isCurrent; }
+
+    public void setCurrent(int Current) { this.isCurrent = Current; }
 
     public int getVisited() { return isVisited; }
 

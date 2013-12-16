@@ -40,15 +40,15 @@ public class TileGenerator {
         for(int i = 0; i < getHorizAmount(MAPWIDTH, TILESIZE); i++) {
             for (int j = 0; j < getVertAmount(MAPHEIGHT, TILESIZE); j++) {
                 // Create a blank template of tiles to work with.
-                this.addTile(i, j, TILESIZE * i, TILESIZE * j, WALLBUFFER, 1, 0);
+                this.addTile(i, j, TILESIZE * i, TILESIZE * j, WALLBUFFER, 1, 0, 0);
             }
         }
     }
 
-    public void addTile(int xCoord, int yCoord, int xLoc, int yLoc, int wallBuffer, int isFilled, int isVisited) {
+    public void addTile(int xCoord, int yCoord, int xLoc, int yLoc, int wallBuffer, int isFilled, int isVisited, int isCurrent) {
         int wallWidth = TILESIZE - wallBuffer;
 
-        mapTiles.add(new int[]{xCoord, yCoord, xLoc, yLoc, isFilled, isVisited});
+        mapTiles.add(new int[]{xCoord, yCoord, xLoc, yLoc, isFilled, isVisited, isCurrent});
 
         /*
          * Wall Array Definitions
@@ -73,13 +73,12 @@ public class TileGenerator {
         wallTiles.add(new int[]{xCoord, yCoord, xLoc, yLoc + wallBuffer, 1, wallBuffer, 2});
         // Right Wall
         wallTiles.add(new int[]{xCoord, yCoord, xLoc + TILESIZE, yLoc + wallBuffer, 1, wallBuffer, 3});
-        System.out.println(yLoc + TILESIZE + wallBuffer + " " + wallWidth + " " + wallBuffer);
     }
 
     public static Tile getTile(int xCoord, int yCoord) {
         for (int[] tile : mapTiles) {
             if (tile[Tile.XCOORD] == xCoord && tile[Tile.YCOORD] == yCoord) {
-                return new Tile(tile[Tile.XCOORD], tile[Tile.YCOORD], tile[Tile.XLOC], tile[Tile.YLOC], tile[Tile.ISFILLED], tile[Tile.ISVISITED]);
+                return new Tile(tile[Tile.XCOORD], tile[Tile.YCOORD], tile[Tile.XLOC], tile[Tile.YLOC], tile[Tile.ISFILLED], tile[Tile.ISVISITED], tile[Tile.ISCURRENT]);
             }
         }
         return null;
@@ -90,14 +89,28 @@ public class TileGenerator {
     }
 
     public static void setTileVisible(int xCoord, int yCoord, int visibility) {
+        if (xCoord >= 0 || yCoord >= 0) {
+            for (int[] tile : mapTiles) {
+                if (tile[Tile.XCOORD] == xCoord && tile[Tile.YCOORD] == yCoord) {
+                    tile[Tile.ISFILLED] = visibility;
+                    // Set visited
+                    tile[Tile.ISVISITED] = 1;
+                    break;
+                }
+            }
+        } else {
+            System.out.println("xCoord: " + xCoord + " | yCoord: " + yCoord);
+        }
+    }
+
+    public static void setTileCurrent(int xCoord, int yCoord, int current) {
         for (int[] tile : mapTiles) {
             if (tile[Tile.XCOORD] == xCoord && tile[Tile.YCOORD] == yCoord) {
-                tile[Tile.ISFILLED] = visibility;
-                // Set visited
-                tile[Tile.ISVISITED] = 1;
+                tile[Tile.ISCURRENT] = current;
                 break;
             }
         }
+
     }
 
     public static boolean isTilesVisited() {
@@ -141,15 +154,15 @@ public class TileGenerator {
         return walls;
     }
 
-    private int getVertAmount(int mapHeight, int tileSize) {
+    public static int getVertAmount(int mapHeight, int tileSize) {
         return mapHeight / tileSize;
     }
 
-    private int getHorizAmount(int mapWidth, int tileSize) {
+    public static int getHorizAmount(int mapWidth, int tileSize) {
         return mapWidth / tileSize;
     }
 
-    private int getTileAmount(int mapWidth, int mapHeight, int tileSize) {
+    public static int getTileAmount(int mapWidth, int mapHeight, int tileSize) {
         return (mapWidth * mapHeight) / tileSize;
     }
 

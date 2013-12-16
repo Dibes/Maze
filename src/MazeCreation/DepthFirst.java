@@ -2,6 +2,7 @@ package MazeCreation;
 
 import Components.Tile;
 import Components.TileGenerator;
+import Maze.*;
 
 import java.util.Random;
 
@@ -18,15 +19,32 @@ public class DepthFirst {
 
     public DepthFirst() {
 
+        // Set the starting tile as visited and current
+        TileGenerator.setTileVisible(Maze.startingTile.getxCoord(), Maze.startingTile.getyCoord(), 0);
+        TileGenerator.setTileCurrent(Maze.startingTile.getxCoord(), Maze.startingTile.getyCoord(), 1);
+        // Grab the next random tile
+        Tile lastTile = Maze.startingTile;
+        Tile newTile = TileGenerator.getTile(Utility.getHorizNext(lastTile.getxCoord(), -1, 1), Utility.getVertNext(lastTile.getyCoord(), -1, 1));
         while(!TileGenerator.isTilesVisited()) {
             // I want to pick a random tile around
-            for (int[] tile : TileGenerator.getTiles()) {
-                if (TileGenerator.getTile(tile[Tile.XCOORD], tile[Tile.YCOORD]).getVisited() == 0) {
-                    TileGenerator.setTileVisible(tile[Tile.XCOORD], tile[Tile.YCOORD], 0);
-                    TileGenerator.setWallVisible(tile[Tile.XCOORD], tile[Tile.YCOORD], 0, random.nextInt(3));
-
-                }
+            if (newTile.getxCoord() < 0 || newTile.getyCoord() < 0) {
+                System.out.println(newTile.getxCoord() + " " + newTile.getyCoord());
             }
+
+            TileGenerator.setTileVisible(newTile.getxCoord(), newTile.getyCoord(), 0);
+            TileGenerator.setTileCurrent(lastTile.getxCoord(), lastTile.getyCoord(), 0);
+            TileGenerator.setTileCurrent(newTile.getxCoord(), newTile.getyCoord(), 1);
+            // Grab new tiles
+            lastTile = newTile;
+            newTile = TileGenerator.getTile(Utility.getHorizNext(lastTile.getxCoord(), -1, 1), Utility.getVertNext(lastTile.getyCoord(), -1, 1));
+
+            try {
+                Thread.sleep(200);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            System.out.println("_____________________________________________________________");
         }
 
     }

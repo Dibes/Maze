@@ -1,6 +1,7 @@
 package Maze;
 
 import Components.Board;
+import Components.Tile;
 import Components.TileGenerator;
 import MazeCreation.DepthFirst;
 
@@ -22,6 +23,7 @@ public class Maze {
     public static int WALLBUFFER = 5;
     private final int WIDTHBUFFER = 16;
     private final int HEIGHTBUFFER = 38;
+    public static Tile startingTile;
 
     public static void main(String[] args) {
         new Maze();
@@ -38,8 +40,9 @@ public class Maze {
         mazeFrame.setVisible(true);
         mazeFrame.setResizable(false);
         mazeFrame.setDefaultCloseOperation(mazeFrame.EXIT_ON_CLOSE);
-        
+        startingTile = TileGenerator.getTile(0, 0);
         // Test wall and tile color changes
+        // Set the starting tile as visited
         DepthFirst depthFirst = new DepthFirst();
 
 
