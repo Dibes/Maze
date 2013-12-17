@@ -5,18 +5,14 @@ import Components.TileGenerator;
 import Maze.*;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 /**
  * Created with IntelliJ IDEA.
  * User: Jon
  * Date: 12/7/13
  * Time: 6:44 PM
- * To change this template use File | Settings | File Templates.
  */
 public class DepthFirst {
-
-    Random random = new Random();
 
     public DepthFirst() {
 
@@ -26,24 +22,28 @@ public class DepthFirst {
         // Grab the next random tile
         Tile lastTile = Maze.startingTile;
         Tile newTile = getNextTile(lastTile);
-
+        // A list of the tiles traveled so far.
+        ArrayList<Tile> tilesTraveled = new ArrayList<Tile>();
+        // Set the starting tile active
         setTileActive(newTile, lastTile);
+        // Add the newtile and last tile to the traversed list
+        tilesTraveled.add(lastTile);
+        tilesTraveled.add(newTile);
 
         while(!TileGenerator.isTilesVisited()) {
 
             // Grab new tiles
             lastTile = newTile;
 
-            /* Create a method that grabs a new tile based on the surrunding tiles available.
-             *  This will be done by grabbing the surrounding tiles then assessing them on the following criteria
-             *      - Is not visited yet
-             *      - Is on the board
-             *
-             *  Once the tiles are grabbed and put into an array; choose one at random.
-             */
-
             newTile = getNextTile(lastTile);
-            setTileActive(newTile, lastTile);
+
+            if (newTile != null) {
+                setTileActive(newTile, lastTile);
+                tilesTraveled.add(newTile);
+            } else {
+                // Backtrack to where this is an open tile.
+                newTile = backTrack(tilesTraveled);
+            }
 
             try {
                 Thread.sleep(50);
@@ -77,6 +77,13 @@ public class DepthFirst {
 
     }
 
+    /*
+     *  This grabs the surrounding tiles then assesses them on the following criteria
+     *      - Is not visited yet
+     *      - Is on the board
+     *
+     *  Once the tiles are grabbed and put into an array; choose one at random.
+     */
     public Tile getNextTile(Tile lastTile) {
 
         Tile upperTile = TileGenerator.getTile(lastTile.getxCoord(), lastTile.getyCoord() - 1);
@@ -101,7 +108,24 @@ public class DepthFirst {
             tiles.add(lowerTile);
         }
 
-        return tiles.get(Utility.randInt(0, tiles.size() - 1));
+        if (tiles.size() == 0) {
+            return null;
+        } else {
+            return tiles.get(Utility.randInt(0, tiles.size() - 1));
+        }
+    }
+
+    public Tile backTrack(ArrayList<Tile> tiles) {
+
+        for (int i = tiles.size() - 1; i == 0; i--) {
+            Tile nextTile = getNextTile(tiles.get(i));
+            if (nextTile != null) {
+                return nextTile;
+            }
+        }
+
+        return null;
+
     }
 
 }
