@@ -1,5 +1,6 @@
 package Maze;
 
+import Components.Tile;
 import Components.TileGenerator;
 
 import java.util.Random;
@@ -29,19 +30,24 @@ public class Utility {
             newRand = randInt(min, max);
         }
 
-        return newRand;
+        return newRand + current;
 
+    }
+
+    public static boolean isOnBoard(Tile tile) {
+        return tile.getxCoord() <= TileGenerator.getHorizAmount(Maze.MAPWIDTH, Maze.TILESIZE) && tile.getyCoord() <= TileGenerator.getVertAmount(Maze.MAPHEIGHT, Maze.TILESIZE);
     }
 
     public static int getVertNext(int current, int min, int max) {
 
         int newRand = randInt(min, max);
 
+
         while ((newRand + current) > TileGenerator.getVertAmount(Maze.MAPHEIGHT, Maze.TILESIZE) || (newRand + current) < 0) {
             newRand = randInt(min, max);
         }
 
-        return newRand;
+        return newRand + current;
 
     }
 
