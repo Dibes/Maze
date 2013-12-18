@@ -31,33 +31,31 @@ public class DepthFirst {
         tilesTraveled.add(newTile);
 
         while(!TileGenerator.isTilesVisited()) {
-            if (newTile != null) {
-                // Grab new tiles
-                lastTile = newTile;
 
-            }
+            // Grab new tiles
+            lastTile = newTile;
+
             newTile = getNextTile(lastTile);
 
-            if (newTile != null && lastTile != null) {
+            if (newTile != null) {
                 setTileActive(newTile, lastTile);
                 tilesTraveled.add(newTile);
             } else {
                 // Backtrack to where this is an open tile.
                 newTile = backTrack(tilesTraveled);
-                setTileActive(newTile, lastTile);
-                tilesTraveled.add(newTile);
             }
 
             try {
+<<<<<<< HEAD
                 Thread.sleep(500);
+=======
+                Thread.sleep(50);
+>>>>>>> parent of c3af38f... Depth First method completed!
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
 
         }
-
-        TileGenerator.setTileCurrent(newTile.getxCoord(), newTile.getyCoord(), 0);
-
     }
 
     public void setTileActive(Tile newTile, Tile lastTile) {
@@ -123,7 +121,7 @@ public class DepthFirst {
 
     public Tile backTrack(ArrayList<Tile> tiles) {
 
-        for (int i = tiles.size() - 1; i >= 0; i--) {
+        for (int i = tiles.size() - 1; i == 0; i--) {
             Tile nextTile = getNextTile(tiles.get(i));
             if (nextTile != null) {
                 return nextTile;
