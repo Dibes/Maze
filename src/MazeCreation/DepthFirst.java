@@ -46,11 +46,7 @@ public class DepthFirst {
             }
 
             try {
-<<<<<<< HEAD
                 Thread.sleep(500);
-=======
-                Thread.sleep(50);
->>>>>>> parent of c3af38f... Depth First method completed!
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
