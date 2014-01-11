@@ -46,7 +46,7 @@ public class DepthFirst {
             }
 
             try {
-                Thread.sleep(500);
+                Thread.sleep(5);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
