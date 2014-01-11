@@ -43,6 +43,7 @@ public class DepthFirst {
             } else {
                 // Backtrack to where this is an open tile.
                 newTile = backTrack(tilesTraveled);
+                setTileActive(newTile, lastTile);
             }
 
             try {
@@ -117,7 +118,7 @@ public class DepthFirst {
 
     public Tile backTrack(ArrayList<Tile> tiles) {
 
-        for (int i = tiles.size() - 1; i == 0; i--) {
+        for (int i = tiles.size() - 1; i >= 0; i--) {
             Tile nextTile = getNextTile(tiles.get(i));
             if (nextTile != null) {
                 return nextTile;
