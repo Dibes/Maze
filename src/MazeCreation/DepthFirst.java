@@ -46,15 +46,7 @@ public class DepthFirst {
             }
 
             try {
-<<<<<<< HEAD
-                Thread.sleep(5);
-=======
-<<<<<<< HEAD
-                Thread.sleep(500);
-=======
                 Thread.sleep(50);
->>>>>>> parent of c3af38f... Depth First method completed!
->>>>>>> parent of b83aac2... Github changed my code!
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
